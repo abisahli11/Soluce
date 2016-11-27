@@ -1,21 +1,15 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.easydev.soluce" version="1.0.0">
-  <name>appTest</name>
-  <description>Hello World sample application that responds to the deviceready event.</description>
-  <author href="http://phonegap.com" email="support@phonegap.com">PhoneGap Team</author>
-  <content src="index.html"/>
-  <preference name="DisallowOverscroll" value="true"/>
-  <preference name="android-minSdkVersion" value="14"/>
-  <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/>
-
     <name>Soluce</name>
     <description>
         Appli d'aide à la résolution des mots fléchés - croisés.
     </description>
-    <author email="contact@easydev.pro" href="http://phonegap.com">
+    <author href="http://phonegap.com" email="contact@easydev.pro">
         EasyDev Team
     </author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="android-minSdkVersion" value="14"/>
+    <icon src="icon.png"/>
     <platform name="android">
         <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
         <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
@@ -25,22 +19,22 @@
         <icon density="xxxhdpi" src="www/res/icon/android/drawable-xxxhdpi-icon.png" />
     </platform>
     <platform name="ios">
-        <Icon-App height="57" platform="ios" src="www/res/icon/ios/Icon-App.png" width="57" />
-        <Icon-App height="114" platform="ios" src="www/res/icon/ios/Icon-App@2x.png" width="114" />
-        <Icon-App height="40" platform="ios" src="www/res/icon/ios/Icon-App-40.png" width="40" />
-        <Icon-App height="80" platform="ios" src="www/res/icon/ios/Icon-App-40@2x.png" width="80" />
-        <Icon-App height="50" platform="ios" src="www/res/icon/ios/Icon-App-50.png" width="50" />
-        <Icon-App height="100" platform="ios" src="www/res/icon/ios/Icon-App-50@2x.png" width="100" />
-        <Icon-App height="60" platform="ios" src="www/res/icon/ios/Icon-App-60.png" width="60" />
-        <Icon-App height="120" platform="ios" src="www/res/icon/ios/Icon-App-60@2x.png" width="120" />
-        <Icon-App height="180" platform="ios" src="www/res/icon/ios/Icon-App-60@3x.png" width="180" />
-        <Icon-App height="72" platform="ios" src="www/res/icon/ios/Icon-App-72.png" width="72" />
-        <Icon-App height="144" platform="ios" src="www/res/icon/ios/Icon-App-72@2x.png" width="144" />
-        <Icon-App height="76" platform="ios" src="www/res/icon/ios/Icon-App-76.png" width="76" />
-        <Icon-App height="152" platform="ios" src="www/res/icon/ios/Icon-App-76@2x.png" width="152" />
-        <Icon-App height="29" platform="ios" src="www/res/icon/ios/Icon-App-small.png" width="29" />
-        <Icon-App height="58" platform="ios" src="www/res/icon/ios/Icon-App-small@2x.png" width="58" />
-        <Icon-App height="87" platform="ios" src="www/res/icon/ios/Icon-App-small@3x.png" width="87" />
+        <icon height="57" platform="ios" src="www/res/icon/ios/Icon-App.png" width="57" />
+        <Icon-App height="114" platform="ios" src="www/res/icon/ios/icon@2x.png" width="114" />
+        <icon height="40" platform="ios" src="www/res/icon/ios/icon-40.png" width="40" />
+        <icon height="80" platform="ios" src="www/res/icon/ios/icon-40@2x.png" width="80" />
+        <icon height="50" platform="ios" src="www/res/icon/ios/icon-50.png" width="50" />
+        <icon height="100" platform="ios" src="www/res/icon/ios/icon-50@2x.png" width="100" />
+        <icon height="60" platform="ios" src="www/res/icon/ios/icon-60.png" width="60" />
+        <icon height="120" platform="ios" src="www/res/icon/ios/icon-60@2x.png" width="120" />
+        <icon height="180" platform="ios" src="www/res/icon/ios/icon-60@3x.png" width="180" />
+        <icon height="72" platform="ios" src="www/res/icon/ios/icon-72.png" width="72" />
+        <icon height="144" platform="ios" src="www/res/icon/ios/icon-72@2x.png" width="144" />
+        <icon height="76" platform="ios" src="www/res/icon/ios/icon-76.png" width="76" />
+        <icon height="152" platform="ios" src="www/res/icon/ios/icon-76@2x.png" width="152" />
+        <icon height="29" platform="ios" src="www/res/icon/ios/icon-small.png" width="29" />
+        <icon height="58" platform="ios" src="www/res/icon/ios/icon-small@2x.png" width="58" />
+        <icon height="87" platform="ios" src="www/res/icon/ios/icon-small@3x.png" width="87" />
     </platform>
     <access origin="*" />
     <allow-intent href="http://*/*" />
