@@ -1,12 +1,8 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.easydev.soluce" version="1.0.0">
-    <name>Soluce</name>
-    <description>
-        Appli d'aide à la résolution des mots fléchés - croisés.
-    </description>
-    <author href="http://phonegap.com" email="contact@easydev.pro">
-        EasyDev Team
-    </author>
-    <content src="index.html" />
+    <name>appSoluce</name>
+    <description>Solution pour mot fleches</description>
+    <author href="http://easydev.com" email="contact@easydev.pro">EasyDev Team</author>
+    <content src="index.html"/>
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14"/>
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1"/>
