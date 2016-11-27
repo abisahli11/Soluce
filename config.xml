@@ -1,0 +1,51 @@
+<widget id="com.easydev.soluce" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Soluce</name>
+    <description>
+        Appli d'aide à la résolution des mots fléchés - croisés.
+    </description>
+    <author email="contact@easydev.pro" href="http://phonegap.com">
+        EasyDev Team
+    </author>
+    <content src="index.html" />
+    <preference name="DisallowOverscroll" value="true" />
+    <platform name="android">
+        <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
+        <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
+        <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
+        <icon density="xhdpi" src="www/res/icon/android/drawable-xhdpi-icon.png" />
+        <icon density="xxhdpi" src="www/res/icon/android/drawable-xxhdpi-icon.png" />
+        <icon density="xxxhdpi" src="www/res/icon/android/drawable-xxxhdpi-icon.png" />
+    </platform>
+    <platform name="ios">
+        <Icon-App height="57" platform="ios" src="www/res/icon/ios/Icon-App.png" width="57" />
+        <Icon-App height="114" platform="ios" src="www/res/icon/ios/Icon-App@2x.png" width="114" />
+        <Icon-App height="40" platform="ios" src="www/res/icon/ios/Icon-App-40.png" width="40" />
+        <Icon-App height="80" platform="ios" src="www/res/icon/ios/Icon-App-40@2x.png" width="80" />
+        <Icon-App height="50" platform="ios" src="www/res/icon/ios/Icon-App-50.png" width="50" />
+        <Icon-App height="100" platform="ios" src="www/res/icon/ios/Icon-App-50@2x.png" width="100" />
+        <Icon-App height="60" platform="ios" src="www/res/icon/ios/Icon-App-60.png" width="60" />
+        <Icon-App height="120" platform="ios" src="www/res/icon/ios/Icon-App-60@2x.png" width="120" />
+        <Icon-App height="180" platform="ios" src="www/res/icon/ios/Icon-App-60@3x.png" width="180" />
+        <Icon-App height="72" platform="ios" src="www/res/icon/ios/Icon-App-72.png" width="72" />
+        <Icon-App height="144" platform="ios" src="www/res/icon/ios/Icon-App-72@2x.png" width="144" />
+        <Icon-App height="76" platform="ios" src="www/res/icon/ios/Icon-App-76.png" width="76" />
+        <Icon-App height="152" platform="ios" src="www/res/icon/ios/Icon-App-76@2x.png" width="152" />
+        <Icon-App height="29" platform="ios" src="www/res/icon/ios/Icon-App-small.png" width="29" />
+        <Icon-App height="58" platform="ios" src="www/res/icon/ios/Icon-App-small@2x.png" width="58" />
+        <Icon-App height="87" platform="ios" src="www/res/icon/ios/Icon-App-small@3x.png" width="87" />
+    </platform>
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+</widget>
