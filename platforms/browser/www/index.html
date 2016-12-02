@@ -38,42 +38,43 @@
     -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
-    <link rel="stylesheet" type="text/css" href="lib/dhtmlx/codebase/dhtmlx.css">
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.css">
     <title>Soluce</title>
 </head>
 
 <body>
-    <div id="form_container" style="height:100px;"></div>
-    <div style="clear:both;"><hr/></div>
-    <div id="entete" class="dhx_list">
-      <div class="dhx_list_item dhx_list_default_item" style="width:100%; font-size: 20px; height:50px; padding:10px; margin:0px; overflow:hidden;">
-        <table width="100%">
-          <thead>
-            <tr>
-                <td width="80%">SOLUTION</td>
-                <td width="20%">TAILLE</td>
-            </tr>
-          </thead>
-        </table>
+    <div data-role="page">
+      <div data-role="header">
+        Soluce Mots Fleches
+      </div>
+    
+      <div data-role="main" class="ui-content">
+          <form id="frm">
+                <label for="search" class="ui-hidden-accessible"">Votre recherche:</label>
+                <input type="search" data-inline="true" data-mini="true" name="search" id="search" placeholder="Votre recherche ...">
+                <input type="submit" data-inline="true" data-mini="true" value="GO">
+          </form>
+          <table data-role="table" data-mode="columntoggle:none" class="ui-responsive" id="myTable">
+            <thead>
+              <tr>
+                <th>SOLUTION</th>
+                <th>TAILLE</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        
       </div>
     </div>
-    <div id="data_container"></div>
-    <script src="lib/dhtmlx/codebase/dhtmlx.js" type="text/javascript"></script>
+    
     <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>
 </body>
-<div id="template_container" style="display: none;">
-  <table width="100%">
-      <tr>
-          <td width="80%">#name#</td>
-          <td width="20%">#taille#</td>
-      </tr>
-  </table>
-</div>
 
 </html>

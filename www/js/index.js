@@ -37,16 +37,11 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        formStructure = [
-            {type:"settings",position:"label-top"},
-            {type: "fieldset",name:"calculator", list:[
-                {type: "input", name: 'item', label: 'Def.:', position: 'label-left'},
-                {type:"newcolumn"},
-                {type:"button", name:"search", width:50,offsetTop:2, value:"Go"} 
-            ]}
-        ];
-        var myForm = new dhtmlXForm("form_container",formStructure);
-        myForm.attachEvent("onButtonClick", function(name){searchItem(myForm.getItemValue("item"))});
+        $('#frm').submit(function() {
+            $("#myTable tbody tr").remove();
+            searchItem(search.value);      
+            return false;
+        });
     }
 };
 
@@ -68,13 +63,7 @@ function searchItem(item) {
     $.get(
         'http://www.fsolver.fr/?champ='+item,
         function (response) {
-            var myList;
-            myList = new dhtmlXList({
-                container:"data_container",
-                type:{
-                    template:"html->template_container",
-                }
-            });
+            //alert(response);
             $('#resultatWiki').remove();
             $(response).find('#resultatWiki').clone().hide().appendTo('body');
             $("span[class^='color']").remove();
@@ -83,11 +72,7 @@ function searchItem(item) {
                 nom = $(this).text();
                 nom = nom.trim();
                 lg = nom.length;
-                res += nom+"<br>";
-                myList.add({
-                    name: nom,
-                    taille: lg
-                    },0)
+                addLigne(nom,lg);
             });
             $('#resultatWiki').remove();
             $("span[class^='color']").remove();
@@ -95,25 +80,21 @@ function searchItem(item) {
                 nom= $(this).text();
                 nom = nom.trim();
                 lg = nom.length;
-                res += nom+"<br>";
-                myList.add({
-                    name: nom,
-                    taille: lg
-                    },0)
+                addLigne(nom,lg);
             });
-            myList.sort("#name#",tri1); 
-            console.log("res="+res);
-            
-            $('#entete').delegate("thead > tr", "click", function(e){
-                 if (e.target.innerHTML == 'SOLUTION') {
-                    tri1 = ( tri1 == 'asc' ? 'desc' : 'asc');
-                    myList.sort("#name#",tri1); 
-                 } else {
-                    tri2 = ( tri2 == 'asc' ? 'desc' : 'asc');
-                    myList.sort("#taille#",tri2);
-                 }
-            });
-            
-            
     });
+}
+
+function addLigne(c1,c2) {
+
+    var tableau = document.getElementById("myTable");
+    
+    var ligne = tableau.insertRow(-1);
+    
+    var colonne1 = ligne.insertCell(0);
+    colonne1.innerHTML += c1;
+    
+    var colonne2 = ligne.insertCell(1);
+    colonne2.innerHTML += c2;
+    
 }
