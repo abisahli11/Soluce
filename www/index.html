@@ -52,19 +52,24 @@
           <form id="frm">
                 <label for="search" class="ui-hidden-accessible"">Votre recherche:</label>
                 <input type="search" data-inline="true" data-mini="true" name="search" id="search" placeholder="Votre recherche ...">
-                <input type="submit" data-inline="true" data-mini="true" value="GO">
+                <input type="submit" data-inline="true" data-mini="true" value="Lancer Recherche">
           </form>
-          <table data-role="table" data-mode="columntoggle:none" class="ui-responsive" id="myTable">
-            <thead>
-              <tr>
-                <th>SOLUTION</th>
-                <th>TAILLE</th>
-              </tr>
-            </thead>
-            <tbody>
-            </tbody>
-          </table>
-        
+          
+          <div id="soluce">
+            <input type="text" class="search" placeholder="Filtre" />
+            <table style="width:100%;">
+              <thead>
+                <tr>
+                  <th style="width:80%;" class="sort" data-sort="nom">NOM</th>
+                  <th style="width:20%;" class="sort" data-sort="taille">TAILLE</th>
+                </tr>
+              </thead>
+              <tbody class="list">
+              </tbody>
+            </table>
+          </div>
+          
+           
       </div>
     </div>
     
@@ -72,6 +77,7 @@
     <script type="text/javascript" src="js/jquery.mobile-1.4.5.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/list.js"></script>
     <script type="text/javascript">
         app.initialize();
     </script>

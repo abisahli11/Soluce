@@ -16,6 +16,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+ 
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -49,8 +51,6 @@ function searchItem(item) {
 
     item= item.replace(' ','*');
     
-    var tri1 = 'asc';
-    var tri2 = 'desc';
     
     $.ajaxPrefilter( function (options) {
       if (options.crossDomain && jQuery.support.cors) {
@@ -68,11 +68,22 @@ function searchItem(item) {
             $(response).find('#resultatWiki').clone().hide().appendTo('body');
             $("span[class^='color']").remove();
             var res = "";
+            
+            var options = {
+              valueNames: [ 'nom', 'taille' ],
+              item: '<tr><td class="nom"></td><td class="taille"></td></tr>'
+            };
+            
+            $('#soluce tbody tr').remove();
+            var soluceList = new List('soluce', options);
             $('#resultatWiki').find('tbody > tr td').each(function() {
                 nom = $(this).text();
                 nom = nom.trim();
                 lg = nom.length;
-                addLigne(nom,lg);
+                soluceList.add({
+                  nom: nom,
+                  taille: lg
+                });
             });
             $('#resultatWiki').remove();
             $("span[class^='color']").remove();
@@ -80,8 +91,24 @@ function searchItem(item) {
                 nom= $(this).text();
                 nom = nom.trim();
                 lg = nom.length;
-                addLigne(nom,lg);
+                soluceList.add({
+                  nom: nom,
+                  taille: lg
+                });
             });
+            
+            $('#resultat').remove();
+            $(response).find('#resultat').clone().hide().appendTo('body');
+            $('#resultat').find('tbody > tr td').each(function() {
+                nom= $(this).text();
+                nom = nom.trim();
+                lg = nom.length;
+                soluceList.add({
+                  nom: nom,
+                  taille: lg
+                });
+            });
+
     });
 }
 
