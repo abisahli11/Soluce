@@ -72,7 +72,7 @@ function initDhtmlx() {
     
     mygrid = myLayout.cells("b").attachGrid();
     myLayout.cells("b").hideHeader();
-    mygrid.setImagePath("../imgs/");
+    mygrid.setImagePath("codebase/imgs/");
     mygrid.setHeader("Mot,Taille");
     mygrid.setInitWidthsP("80,20");
     mygrid.setColAlign("left,center");
@@ -131,7 +131,7 @@ function addLigne(c1,c2) {
 
 function doOnRowSelected(id){
     mywin = new dhtmlXWindows({
-        image_path:"../imgs/"
+        image_path:"codebase/imgs/"
     });
     mywin.createWindow({
         id:"w1",
@@ -203,8 +203,8 @@ function searchImage(item) {
             $(response).find('.imgs').each (function (index) {
                 id = myCarousel.addCell();
                 url = "http://"+$(this).attr("src");
-                html = "<div style='position: relative; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%;'>";
-                html = html + "<img src='"+url+"' border='0' style='width: 100%; height: 100%;'></div>";
+                //html = "<div style='position: relative; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%;'>";
+                //html = html + "<img src='"+url+"' border='0' style='width: 100%; height: 100%;'></div>";
                 //alert(html);
                 //myCarousel.cells(id).attachHTMLString(html);
                 myCarousel.cells(id).attachURL(url);
