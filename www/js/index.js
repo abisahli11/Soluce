@@ -17,6 +17,11 @@
  * under the License.
  */
  
+var myLayout;
+var myForm;
+var mygrid;
+var mywin,w1;
+var myCarousel;
 
 var app = {
     // Application Constructor
@@ -35,48 +40,40 @@ var app = {
     // The scope of 'this' is the event. In order to call the 'receivedEvent'
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
-        initDhtmlx();
+        app.receivedEvent('deviceready');
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function(id) {
+        myLayout = new dhtmlXLayoutObject({
+            parent: document.body,  
+            pattern: "2E"           
+        });
+        
+        formStructure = [
+            {type: "input", name: "search", label: ""},
+            {type:"newcolumn"},
+            {type:"button", name:"btgo", width:80, value:"GO"} 
+        ];
+        myForm = myLayout.cells("a").attachForm(formStructure);
+        myLayout.cells("a").hideHeader();
+        myLayout.cells("a").setHeight(60);
+        
+        myForm.attachEvent("onButtonClick", function(id){
+            searchItem (myForm.getItemValue("search"));
+        });
+        
+        mygrid = myLayout.cells("b").attachGrid();
+        myLayout.cells("b").hideHeader();
+        mygrid.setImagePath("codebase/imgs/");
+        mygrid.setHeader("Mot,Taille");
+        mygrid.setInitWidthsP("80,20");
+        mygrid.setColAlign("left,center");
+        mygrid.setColTypes("ro,ron");
+        mygrid.setColSorting("str,int");
+        mygrid.attachEvent("onRowSelect",doOnRowSelected);
+        mygrid.init();
     }
 };
-
-var myLayout;
-var myForm;
-var mygrid;
-var mywin,w1;
-var myCarousel;
-
-
-function initDhtmlx() {
-
-    myLayout = new dhtmlXLayoutObject({
-        parent: document.body,  
-        pattern: "2E"           
-    });
-    
-    formStructure = [
-        {type: "input", name: "search", label: ""},
-        {type:"newcolumn"},
-        {type:"button", name:"btgo", width:80, value:"GO"} 
-    ];
-    myForm = myLayout.cells("a").attachForm(formStructure);
-    myLayout.cells("a").hideHeader();
-    myLayout.cells("a").setHeight(60);
-    
-    myForm.attachEvent("onButtonClick", function(id){
-        searchItem (myForm.getItemValue("search"));
-    });
-    
-    mygrid = myLayout.cells("b").attachGrid();
-    myLayout.cells("b").hideHeader();
-    mygrid.setImagePath("codebase/imgs/");
-    mygrid.setHeader("Mot,Taille");
-    mygrid.setInitWidthsP("80,20");
-    mygrid.setColAlign("left,center");
-    mygrid.setColTypes("ro,ron");
-    mygrid.setColSorting("str,int");
-    mygrid.attachEvent("onRowSelect",doOnRowSelected);
-    mygrid.init();
-}
 
 function searchItem(item) {
 
