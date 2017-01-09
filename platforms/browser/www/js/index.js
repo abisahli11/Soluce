@@ -40,10 +40,6 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        $('#frm').submit(function() {
-            searchItem(search.value);      
-            return false;
-        });
     }
 };
 
