@@ -1,21 +1,21 @@
 {
-  "name": "phonegap-template-hello-world",
+  "name": "soluce",
   "version": "4.0.3",
-  "description": "> A Hello World template built with PhoneGap",
+  "description": "> mot fleche",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phonegap/phonegap-app-hello-world.git"
+    "url": "https://github.com/abisahli11/Soluce/"
   },
-  "author": "PhoneGap Team",
+  "author": "EasyDev",
   "license": "Apache-2.0",
   "keywords": [
-    "ecosystem:phonegap",
-    "ecosystem:cordova",
+    "ecosystem:mot",
+    "ecosystem:fleche",
     "cordova:template",
     "phonegap:template"
   ],
   "bugs": {
-    "url": "https://github.com/phonegap/phonegap-app-hello-world/issues"
+    "url": "https://github.com/abisahli11/Soluce/"
   },
-  "homepage": "https://github.com/phonegap/phonegap-app-hello-world"
+  "homepage": "https://github.com/abisahli11/Soluce/"
 }
