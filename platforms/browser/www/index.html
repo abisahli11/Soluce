@@ -50,6 +50,13 @@
 </head>
 
 <body>
+    <div style="width:100%;height:100%;margin:0px;padding:0px;overflow:hidden;">
+      <div style="margin:10px;padding:0px;">
+        <input type="search" id="search" placeholder="Recherche">             
+        <input type="button" value="  GO  " onclick="searchItem($('#search').val());">
+      </div>
+      <div id="gridbox" style="width:100%;height:100%;padding:0px;overflow:hidden;"></div>
+    </div>
     <script type="text/javascript" src="js/jquery-3.1.1.js"></script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="codebase/dhtmlx.js"></script>

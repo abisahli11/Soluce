@@ -44,33 +44,12 @@ var app = {
     }
 };
 
-var myLayout;
-var myForm;
 var mygrid;
 var mywin,w1;
 var myCarousel;
 
-function dhtmlxInit() {
-    myLayout = new dhtmlXLayoutObject({
-        parent: document.body,  
-        pattern: "2E"           
-    });
-    
-    formStructure = [
-        {type: "input", name: "search", label: ""},
-        {type:"newcolumn"},
-        {type:"button", name:"btgo", width:80, value:"GO"} 
-    ];
-    myForm = myLayout.cells("a").attachForm(formStructure);
-    myLayout.cells("a").hideHeader();
-    myLayout.cells("a").setHeight(60);
-    
-    myForm.attachEvent("onButtonClick", function(id){
-        searchItem (myForm.getItemValue("search"));
-    });
-    
-    mygrid = myLayout.cells("b").attachGrid();
-    myLayout.cells("b").hideHeader();
+function dhtmlxInit() {    
+    mygrid = new dhtmlXGridObject('gridbox');
     mygrid.setImagePath("codebase/imgs/");
     mygrid.setHeader("Mot,Taille");
     mygrid.setInitWidthsP("80,20");
@@ -82,9 +61,8 @@ function dhtmlxInit() {
 }
 
 function searchItem(item) {
-
     item= item.replace(' ','*');
-    mygrid.clearAll();
+    //mygrid.clearAll();
     
     $.ajaxPrefilter( function (options) {
       if (options.crossDomain && jQuery.support.cors) {
@@ -118,11 +96,12 @@ function searchItem(item) {
                 addLigne(nom,lg);
             });
     });
+    
 }
 
 function addLigne(c1,c2) {
     var ids=mygrid.findCell(c1,0);
-    if (!ids.length) {
+    if (!ids.length) { 
         var newId = mygrid.uid();
         mygrid.addRow(newId,[c1,c2]);
     }
