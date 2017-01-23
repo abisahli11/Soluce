@@ -40,25 +40,14 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        dhtmlxInit();
+        //dhtmlxInit();
     }
 };
 
-var mygrid;
 var mywin,w1;
 var myCarousel;
-
-function dhtmlxInit() {    
-    mygrid = new dhtmlXGridObject('gridbox');
-    mygrid.setImagePath("codebase/imgs/");
-    mygrid.setHeader("Mot,Taille");
-    mygrid.setInitWidthsP("80,20");
-    mygrid.setColAlign("left,center");
-    mygrid.setColTypes("ro,ron");
-    mygrid.setColSorting("str,int");
-    mygrid.attachEvent("onRowSelect",doOnRowSelected);
-    mygrid.init();
-}
+var tNom=[];
+var tLg=[];
 
 function searchItem(item) {
     item= item.replace(' ','*');
@@ -71,9 +60,11 @@ function searchItem(item) {
         //options.url = "http://cors.corsproxy.io/url=" + options.url;
       }
     });
-    
+    tNom=[];
+    tLg=[];
+    $("#tabres tbody").remove();
     $.get(
-        'http://www.fsolver.fr/?champ='+item,
+        'https://www.fsolver.fr/?champ='+item,
         function (response) {
             //alert(response);
     
@@ -81,30 +72,59 @@ function searchItem(item) {
             $(response).find('*#resultatWiki').clone().hide().appendTo('body');
             $("span[class^='color']").remove();
             $('*#resultatWiki').find('tbody > tr td').each(function() {
-                nom = $(this).text();
-                nom = nom.trim();
-                lg = nom.length;
-                addLigne(nom,lg);
+                nom = $(this).text().trim();
+                if (tNom.indexOf(nom) === -1) {
+                    tNom.push(nom);
+                    tLg.push(nom.length);
+                }
             });
             $('#resultatWiki').remove();
             $('#resultat').remove();
             $(response).find('#resultat').clone().hide().appendTo('body');
             $('#resultat').find('tbody > tr td').each(function() {
-                nom= $(this).text();
-                nom = nom.trim();
-                lg = nom.length;
-                addLigne(nom,lg);
+                nom = $(this).text().trim();
+                if (tNom.indexOf(nom) === -1) {
+                    tNom.push(nom);
+                    tLg.push(nom.length);
+                }
             });
+            afficheTableau();
     });
     
 }
 
-function addLigne(c1,c2) {
-    var ids=mygrid.findCell(c1,0);
-    if (!ids.length) { 
-        var newId = mygrid.uid();
-        mygrid.addRow(newId,[c1,c2]);
+function afficheTableau() {
+    //alert ("tableau nb = "+tNom.length);
+    for (i=0; i<tNom.length; i++) { 
+        $("#tabres").append('<tr><td>'+tNom[i]+'</td><td style="text-align:center;">'+tLg[i]+'</td></tr>');
     }
+
+}
+
+function tri(item) {
+    if (item == 1) {
+        var array = tNom.slice();
+    } else {
+        var array = tLg.slice();
+    }
+    
+    for (i=0; i<array.length; i++) { 
+        for (j=i+1; j<array.length-1; j++) {
+            if (array[j]<array[i]) {
+                inter = array[i];
+                array[i]=array[j];
+                array[j]=inter;
+                nom = tNom[i];
+                tNom[i]=tNom[j];
+                tNom[j]=nom;
+                nb = tLg[i];
+                tLg[i]=tLg[j];
+                tLg[j]=nb;
+                }
+            }
+        }
+    $("#tabres tbody").remove();
+    afficheTableau();
 }
 
 function doOnRowSelected(id){
@@ -161,7 +181,6 @@ function searchDefinition(item) {
 
 function searchImage(item) {
 
-    mygrid.clearAll();
     var html="";
     var id;
     var url;
