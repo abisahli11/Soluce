@@ -44,10 +44,10 @@ var app = {
     }
 };
 
-var mywin,w1;
-var myCarousel;
 var tNom=[];
 var tLg=[];
+var modal = document.getElementById('myModal');
+var span = document.getElementsByClassName("close")[0];
 
 function searchItem(item) {
     item= item.replace(' ','*');
@@ -130,28 +130,7 @@ function tri(item) {
     afficheTableau();
 }
 
-function dico(nom){ alert(nom);
-    mywin = new dhtmlXWindows({
-        image_path:"codebase/imgs/"
-    });
-    mywin.createWindow({
-        id:"w1",
-        caption:"Definition",
-        modal:true,
-        left:20,
-        top:30,
-        width:300,
-        height:300,
-    });
-    mywin.window("w1").button("park").hide();
-    mywin.window("w1").button("minmax").hide();
-    mywin.window("w1").button("help").show();
-    mywin.window("w1").maximize();
-    mywin.window("w1").denyResize();
-    mywin.window("w1").button("help").attachEvent("onClick", function(){
-        myCarousel =  mywin.window("w1").attachCarousel();
-        searchImage(nom);
-    });
+function dico(nom){ 
     searchDefinition(nom);
 }
 
@@ -171,15 +150,30 @@ function searchDefinition(item) {
         'http://fr.01reference.com/definition/'+item,
         function (response) {
             //alert(response);
-            var html='<div style="width:100%;height:100%;overflow:auto;">';
+            var html='<div id="dico" style="width:100%;height:100%;overflow:auto;">';
             html = html + $(response).find('div > .definitions').html();
             /*$(response).find('div > .definitions').each(function() {
                 html = html + $(this).html();
             });
-            html = html + '</div>';
-            //alert(html);*/
-            mywin.window("w1").attachHTMLString(html);
+            html = html + '</div>';*/
+            //alert(html);
+            $('#def').append(html);
     });
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+    $('*#dico').empty();
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        $('*#dico').empty();
+    }
 }
 
 function searchImage(item) {
