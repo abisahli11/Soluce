@@ -89,6 +89,9 @@ function searchItem(item) {
                 }
             });
             afficheTableau();
+            $(document).on("click","td.rows", function(e){
+                dico(e.target.innerHTML);
+            });
     });
     
 }
@@ -96,7 +99,7 @@ function searchItem(item) {
 function afficheTableau() {
     //alert ("tableau nb = "+tNom.length);
     for (i=0; i<tNom.length; i++) { 
-        $("#tabres").append('<tr><td>'+tNom[i]+'</td><td style="text-align:center;">'+tLg[i]+'</td></tr>');
+        $("#tabres").append('<tr><td class="rows">'+tNom[i]+'</td><td style="text-align:center;">'+tLg[i]+'</td></tr>');
     }
 
 }
@@ -127,7 +130,7 @@ function tri(item) {
     afficheTableau();
 }
 
-function doOnRowSelected(id){
+function dico(nom){ alert(nom);
     mywin = new dhtmlXWindows({
         image_path:"codebase/imgs/"
     });
@@ -147,9 +150,9 @@ function doOnRowSelected(id){
     mywin.window("w1").denyResize();
     mywin.window("w1").button("help").attachEvent("onClick", function(){
         myCarousel =  mywin.window("w1").attachCarousel();
-        searchImage(mygrid.cellById(id, 0).getValue());
+        searchImage(nom);
     });
-    searchDefinition(mygrid.cellById(id, 0).getValue());
+    searchDefinition(nom);
 }
 
 function searchDefinition(item) {
