@@ -48,6 +48,7 @@ var tNom=[];
 var tLg=[];
 var modal = document.getElementById('myModal');
 var span = document.getElementsByClassName("close")[0];
+var image;
 
 function searchItem(item) {
     item= item.replace(' ','*');
@@ -131,13 +132,11 @@ function tri(item) {
 }
 
 function dico(nom){ 
+    image = nom;
     searchDefinition(nom);
 }
 
 function searchDefinition(item) {
-
-    //mygrid.clearAll();
-
     $.ajaxPrefilter( function (options) {
       if (options.crossDomain && jQuery.support.cors) {
         var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
@@ -145,27 +144,23 @@ function searchDefinition(item) {
         //options.url = "http://cors.corsproxy.io/url=" + options.url;
       }
     });
-    
     $.get(
         'http://fr.01reference.com/definition/'+item,
         function (response) {
             //alert(response);
-            var html='<div id="dico" style="width:100%;height:100%;overflow:auto;">';
+            var html='<div id="dico">';
             html = html + $(response).find('div > .definitions').html();
-            /*$(response).find('div > .definitions').each(function() {
-                html = html + $(this).html();
-            });
-            html = html + '</div>';*/
-            //alert(html);
             $('#def').append(html);
     });
-    modal.style.display = "block";
+    $('#myModal1').css({display:'block'});
 }
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
+function closeModal() {
+    $('#myModal1').css({display:'none'});
     $('*#dico').empty();
+    $('#myModal2').css({display:'none'});
+    $('.swiper-wrapper').empty();
 }
 
 // When the user clicks anywhere outside of the modal, close it
@@ -176,13 +171,10 @@ window.onclick = function(event) {
     }
 }
 
-function searchImage(item) {
-
+function searchImage() {
     var html="";
-    var id;
     var url;
-    //alert(item);
-    
+    //alert(image);
     $.ajaxPrefilter( function (options) {
       if (options.crossDomain && jQuery.support.cors) {
         var http = (window.location.protocol === 'http:' ? 'http:' : 'https:');
@@ -191,17 +183,22 @@ function searchImage(item) {
       }
     });
     $.get(
-        'https://lite.qwant.com/?q='+item+'&t=images&size=small/',
+        'https://lite.qwant.com/?q='+image+'&t=images&size=small/',
         function (response) {
             //alert(response);
             $(response).find('.imgs').each (function (index) {
-                id = myCarousel.addCell();
-                url = "http://"+$(this).attr("src");
-                //html = "<div style='position: relative; left: 0px; top: 0px; overflow: hidden; width: 100%; height: 100%;'>";
-                //html = html + "<img src='"+url+"' border='0' style='width: 100%; height: 100%;'></div>";
-                //alert(html);
-                //myCarousel.cells(id).attachHTMLString(html);
-                myCarousel.cells(id).attachURL(url);
+                url = "http:" + $(this).attr("src");
+                html = '<div class="swiper-slide"><img src="' + url + '" max-width="260"></div>';
+                $('.swiper-wrapper').append(html);
+            });
+            //alert(document.getElementById('myModal2').innerHTML);
+            $('#myModal1').css({display:'none'});
+            $('#myModal2').css({display:'block'});
+            var mySwiper = new Swiper ('.swiper-container', {
+              // Optional parameters
+                  direction: 'vertical',
+                  nextButton: '.swiper-button-next',
+                  prevButton: '.swiper-button-prev'
             });
     }); 
 }
