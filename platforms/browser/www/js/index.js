@@ -188,7 +188,7 @@ function searchImage() {
             //alert(response);
             $(response).find('.imgs').each (function (index) {
                 url = "http:" + $(this).attr("src");
-                html = '<div class="swiper-slide"><img src="' + url + '" max-width="260"></div>';
+                html = '<div class="swiper-slide"><img src="' + url + '" style="max-width:100%;max-height:100%;"></div>';
                 $('.swiper-wrapper').append(html);
             });
             //alert(document.getElementById('myModal2').innerHTML);
