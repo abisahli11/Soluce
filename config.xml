@@ -1,4 +1,4 @@
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.easydev.soluce" version="1.0.0">
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="com.easydev.soluce" version="1.0.1">
     <name>appSoluce</name>
     <description>Solution pour mot fleches</description>
     <author href="http://easydev.com" email="contact@easydev.pro">EasyDev Team</author>
